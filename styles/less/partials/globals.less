@@ -1,0 +1,145 @@
+@iterations  : 100;
+@width-count : 1000;
+
+#mapid {
+  height: 100%;
+}
+
+.d-flex {
+  display: flex !important
+}
+
+.fd-column {
+  flex-direction: column;
+}
+
+.a-center {
+  align-items: center
+}
+
+.j-center {
+  justify-content: center
+}
+
+.j-between {
+  justify-content: space-between
+}
+
+.content {
+  max-width: 96%;
+  width    : 1260px;
+  margin   : 0 auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.l-1 {
+  line-height: 1;
+}
+
+.l-1-3 {
+  line-height: 1.3;
+}
+
+.l-1-5 {
+  line-height: 1.5;
+}
+
+.bg-green {
+  background: @colors[green];
+}
+
+.bg-yellow {
+  background: @colors[yellow];
+}
+
+.bg-darkgrey {
+  background: @colors[darkgrey];
+}
+
+.bg-black {
+  background: @colors[black];
+}
+
+.bg-grey {
+  background: #f3f3f3;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.radius {
+  border-radius: 17px !important
+}
+
+.icon-container {
+  border         : 2px solid @colors[green];
+  border-radius  : 50%;
+  height         : 60px;
+  max-width      : 60px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  margin-right   : 20px;
+  color          : @colors[green];
+  transition     : .3s all;
+
+  &:hover {
+    background: @colors[green];
+
+    .icon {
+      color: @colors[white];
+    }
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+}
+
+.generate-spacing (@i, @direction, @d) when (@i >=0) {
+  .m@{d}-@{i} {
+    margin-@{direction}:~"@{i}px !important";
+  }
+
+  .p@{d}-@{i} {
+    padding-@{direction}:~"@{i}px !important";
+  }
+
+  .p-@{i} {
+    padding :~"@{i}px !important";
+  }
+
+  .generate-spacing(@i - 5, @direction, @d);
+}
+
+.generate-widths (@i) when (@i > 0) {
+  .w-@{i} {
+    width :~"@{i}px !important";
+  }
+
+  .h-@{i} {
+    height :~"@{i}px !important";
+  }
+
+  .generate-widths(@i - 50);
+}
+
+.generate-widths(@width-count);
+.generate-spacing (100, left, l);
+.generate-spacing (100, right, r);
+.generate-spacing (100, top, t);
+.generate-spacing (100, bottom, b);
+
+@media screen and (max-width: 768px) {
+  .d-flex {
+    flex-direction: column;
+  }
+}
